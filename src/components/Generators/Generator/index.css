@@ -1,0 +1,8 @@
+.generator-block {
+    display: flex;
+    flex-direction: column;
+    height: 80px;
+    font-size: 20px;
+    border: 1px solid green;
+    cursor: pointer;
+}
