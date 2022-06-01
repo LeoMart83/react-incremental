@@ -6,7 +6,8 @@ import "./index.css";
 
 const PLAYER = {
   money: 10,
-  production: 0,
+  prod: 0,
+  mult: 1,
 }
 
 
@@ -14,25 +15,36 @@ const PLAYER = {
 const App = () => {
 
   const [player, setPlayerData] = useState(PLAYER);
-  const playerRef = useRef(player);
 
   useEffect(() => {
-    setInterval( () => {
-      setPlayerData({ ...playerRef.current, money: playerRef.current.money + playerRef.current.production });
-    }, 1000);
-  }, [])
+    const intervalId = setInterval(() => {
+      setPlayerData({ ...player, money: player.money + player.prod });
+    }, 1000)
 
-  useEffect(() => {
-     playerRef.current = player;
+    return () => {
+      clearInterval(intervalId);
+    }
+  }, [player]);
 
-  }, [player])
+
+
+
+  //   const playerRef = useRef(player);
+  // 
+  //   useEffect(() => {
+  //     setInterval( () => {
+  //       setPlayerData({ ...playerRef.current, money: playerRef.current.money + playerRef.current.production });
+  //     }, 1000);
+  //   }, []);
+  // 
+  //   useEffect(() => {
+  //      playerRef.current = player;
+  //   }, [player]);
 
   const updatePlayer = (generator) => {
 
     if (generator.cost > player.money) return false
-
-    setPlayerData({ ...player, money: player.money - generator.cost, production: player.production + generator.prodPerSec });
-
+    setPlayerData({ ...player, money: player.money - generator.cost, prod: player.prod + generator.prod });
     return true
   }
 

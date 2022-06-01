@@ -1,7 +1,7 @@
-export const CurrencyInfo = (props) => {
+export const CurrencyInfo = ({player}) => {
     return (<div> 
-        <div>You have {props.player.money} $</div>
-        <div>Your production/second is {props.player.production}</div>
+        <div>You have {player.money} $</div>
+        <div>Your production/second is {player.prod}</div>
         </div>
     )
 }

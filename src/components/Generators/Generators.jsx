@@ -2,14 +2,26 @@ import { Generator } from "./Generator/Generator"
 
 const GENERATORS_ARRAY = [
     {
-        name: 'First Generator',
+        name: 'Gen I',
+        tier: 0,
         cost: 10,
-        prodPerSec: 1,
-        bought: 0,
+        prod: 1,
         amount: 0,
     },
-    { name: 'Second Generator', cost: 30, },
-    { name: 'Third Generator', cost: 50, },
+    { 
+        name: 'Gen II', 
+        tier: 1,
+        cost: 40, 
+        prod: 3,
+        amount: 0,
+    },
+    {
+        name: 'Gen III', 
+        tier: 2,
+        cost: 80, 
+        prod: 5,
+        amount: 0,
+    }
 ]
 
 
