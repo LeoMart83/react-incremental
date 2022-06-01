@@ -1,13 +1,16 @@
 import "./index.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 
 export const Generator = (props) => {
 
     const [generator, setGenerator] = useState(props.generator);
 
-    const buyGenerator = () => {
+    useEffect( () => {
+        setGenerator({...generator, prod: Math.round(generator.cost/20 + generator.tier) });
+    }, []);
 
+    const buyGenerator = () => {
         const canBuy = props.updatePlayer(generator);
         if ( !canBuy ) return
         setGenerator({ ...generator, amount: generator.amount + 1, cost: Math.round(generator.cost * 1.2) });
