@@ -5,6 +5,8 @@ export const GENERATORS_ARRAY = [
         cost: 10,
         prod: 1,
         amount: 0,
+        bought: 0,
+        mult: 1,
     },
     {
         name: 'Gen II',
@@ -12,6 +14,8 @@ export const GENERATORS_ARRAY = [
         cost: 60,
         prod: 1,
         amount: 0,
+        bought: 0,
+        mult: 1,
     },
     {
         name: 'Gen III',
@@ -19,5 +23,7 @@ export const GENERATORS_ARRAY = [
         cost: 120,
         prod: 1,
         amount: 0,
+        bought: 0,
+        mult: 1,
     }
 ]
