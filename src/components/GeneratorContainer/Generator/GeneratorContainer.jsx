@@ -8,17 +8,34 @@ export const GeneratorContainer = (props) => {
     const [generator, setGenerator] = useState(props.generator);
 
     useEffect(() => {
-        setGenerator({ ...generator, prod: Math.round(generator.cost / 20 + generator.tier) });
+        setGenerator({ ...generator, prodOfOne: Math.round(generator.cost / 20 + generator.tier) });
     }, []);
 
-    const buyGenerator = async () => {
-        const canBuy = props.updatePlayerProduction(generator);
+    useEffect(() => {
+        if (generator.amount) {
+            props.updatePlayerProduction(generator);
+        }
+    }, [generator.amount]);
+
+    const buyGenerator = () => {
+        const canBuy = props.canBuyGenerator(generator);
         if (!canBuy) return;
 
         if (generator.amount > 0 && (generator.amount + 1) % 10 === 0) {
-            setGenerator({ ...generator, cost: Math.round(generator.cost * 1.2), amount: generator.amount + 1, mult: generator.mult + 1 });
+            setGenerator({
+                ...generator,
+                prod: generator.prodOfOne * generator.amount + 1,
+                cost: Math.round(generator.cost * 1.2),
+                amount: generator.amount + 1,
+                mult: generator.mult + 1
+            });
         } else {
-            setGenerator({ ...generator, cost: Math.round(generator.cost * 1.2), amount: generator.amount + 1, });
+            setGenerator({
+                ...generator,
+                prod: generator.prodOfOne * generator.amount + 1,
+                cost: Math.round(generator.cost * 1.2),
+                amount: generator.amount + 1,
+            });
         }
     }
 

@@ -18,8 +18,8 @@ const App = () => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      setPlayerData({ ...player, money: (player.money + player.prod/20) });
-      // console.log((player.money + player.prod/5).toFixed(1)  );
+      setPlayerData({ ...player, money: (player.money + player.prod / 20) });
+      // console.log((player.money + player.prod/20).toFixed(1)  );
     }, 50)
 
     return () => {
@@ -27,21 +27,21 @@ const App = () => {
     }
   }, [player]);
 
-  const updatePlayerProduction = (generator) => {
-    // This function needs to be changed
-
+  const canBuyGenerator = (generator) => {
     if (generator.cost > player.money) return false
-
-
-    
-    setPlayerData({ ...player, money: player.money - generator.cost, prod: generator.prod * (generator.amount + 1) * generator.mult });
-    return true
+    else return true;
   }
+
+
+  const updatePlayerProduction = (generator) => {
+    setPlayerData({ ...player, money: player.money - ( generator.cost / 1.2 ), prod: generator.prod * generator.mult });
+  }
+
 
   return (<div className="app">
     <div className="first-block"> <CurrencyInfo player={player} /> </div>
     <div className="second-block"> <GameplayArea /> </div>
-    <div className="generators-block"> <Generators updatePlayerProduction={updatePlayerProduction} /> </div>
+    <div className="generators-block"> <Generators updatePlayerProduction={updatePlayerProduction} canBuyGenerator={canBuyGenerator} /> </div>
   </div>
   )
 }
