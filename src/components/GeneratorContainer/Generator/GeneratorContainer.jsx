@@ -13,7 +13,7 @@ export const GeneratorContainer = (props) => {
 
     useEffect(() => {
         if (generator.amount) {
-            props.updatePlayerProduction(generator);
+            props.updateGeneratos(generator);
         }
     }, [generator.amount]);
 
@@ -23,16 +23,18 @@ export const GeneratorContainer = (props) => {
 
         if (generator.amount > 0 && (generator.amount + 1) % 10 === 0) {
             setGenerator({
+                // These +1 suuuck
                 ...generator,
-                prod: generator.prodOfOne * generator.amount + 1,
+                mult: generator.mult + 1,
+                prod: generator.prodOfOne * (generator.amount + 1) * ( generator.mult + 1 ),
                 cost: Math.round(generator.cost * 1.2),
                 amount: generator.amount + 1,
-                mult: generator.mult + 1
+
             });
         } else {
             setGenerator({
                 ...generator,
-                prod: generator.prodOfOne * generator.amount + 1,
+                prod: generator.prodOfOne * (generator.amount + 1) * generator.mult,
                 cost: Math.round(generator.cost * 1.2),
                 amount: generator.amount + 1,
             });
