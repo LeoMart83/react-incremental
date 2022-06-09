@@ -6,7 +6,7 @@ export const Generators = (props) => {
     const mappedGenerators = GENERATORS_ARRAY.map(generator =>
          <GeneratorContainer
             canBuyGenerator={props.canBuyGenerator}
-            updateGeneratos={props.updateGeneratos}
+            updateGameData={props.updateGameData}
             generator={generator}
             key={generator.tier} />);
 

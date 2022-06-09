@@ -13,19 +13,19 @@ export const GeneratorContainer = (props) => {
 
     useEffect(() => {
         if (generator.amount) {
-            props.updateGeneratos(generator);
+            props.updateGameData(generator);
         }
     }, [generator.amount]);
 
     const buyGenerator = () => {
-        const canBuy = props.canBuyGenerator(generator);
+        const canBuy = props.canBuyGenerator(generator.cost);
         if (!canBuy) return;
 
-        const nextGeneratorMult = generator.mult + 1;
+        const nextGeneratorMult = generator.mult * 2;
         const nextGeneratorAmount = generator.amount + 1;
         const nextGeneratorCost = Math.round(generator.cost * 1.2);
 
-        if (( generator.amount > 0 ) && ( nextGeneratorAmount % 10 === 0 )) {
+        if (( generator.amount ) && ( nextGeneratorAmount % 10 === 0 )) {
             setGenerator({
                 ...generator,
                 mult: nextGeneratorMult,

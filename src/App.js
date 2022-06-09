@@ -8,27 +8,25 @@ const PLAYER = {
   money: 10,
   prod: 0,
   mult: 1,
-  generators: {
-    "Gen I": 0,
-    "Gen II": 0,
-    "Gen III": 0,
-  }
-  // generators: [{ 
-  //   name: "Gen I", prod: 0 },{
-  //   name: "Gen II", prod: 0 },{
-  //   name: "Gen III", prod: 0 }]
 }
 
+const PLAYER_GENERATORS = [{
+  name: "Gen I", prod: 0
+}, {
+  name: "Gen II", prod: 0
+}, {
+  name: "Gen III", prod: 0
+}];
 
 
 const App = () => {
 
   const [player, setPlayerData] = useState(PLAYER);
+  const [playerGenerators, setPlayerGenerators] = useState(PLAYER_GENERATORS);
 
   useEffect(() => {
     const intervalId = setInterval(() => {
       setPlayerData({ ...player, money: (player.money + player.prod / 20) });
-      // console.log( (player.money + player.prod/20).toFixed(1) );
     }, 50)
 
     return () => {
@@ -36,38 +34,40 @@ const App = () => {
     }
   }, [player]);
 
-useEffect( () => {
-  setPlayerData( {...player, prod: calcProd()});
-}, [player.generators])
+  useEffect(() => {
+    setPlayerData({ ...player, prod: calcProd() });
+  }, [playerGenerators]);
 
 
-  const canBuyGenerator = (generator) => {
-    if (generator.cost > player.money) return false
+  const canBuyGenerator = (generatorCost) => {
+    if (generatorCost > player.money) return false
     else return true;
   }
 
-  const calcGenerators = (generator) => {
-    return { ...player.generators, [generator.name]: generator.prod }
+
+
+  const calcProd = () => playerGenerators.reduce((totalProduction, element) => totalProduction + element.prod, 0);
+
+  const updateGameData = (generator) => {
+
+    const previousGeneratorCost = generator.cost / 1.2;
+
+    setPlayerData({ ...player, money: player.money - previousGeneratorCost, });
+    setPlayerGenerators(recalculateGenerators(generator));
   }
 
-  const calcProd = () => {
-    let totalProduction = 0;
-    for ( let prop in player.generators) {
-      totalProduction = totalProduction + player.generators[prop];
-    }
-    return totalProduction;
+  const recalculateGenerators = (generator) => {
+    const newGenerators = playerGenerators.map((el) => 
+    ({...el, prod: (el.name === generator.name) ? generator.prod : el.prod }));
+
+    return newGenerators;
   }
 
-  const updateGeneratos = (generator) => {
-    setPlayerData({ ...player, 
-      money: player.money - (generator.cost / 1.2), 
-      generators: calcGenerators(generator) });
-  }
 
   return (<div className="app">
     <div className="first-block"> <CurrencyInfo player={player} /> </div>
     <div className="second-block"> <GameplayArea /> </div>
-    <div className="generators-block"> <Generators updateGeneratos={updateGeneratos} canBuyGenerator={canBuyGenerator} /> </div>
+    <div className="generators-block"> <Generators updateGameData={updateGameData} canBuyGenerator={canBuyGenerator} /> </div>
   </div>
   )
 }
