@@ -8,12 +8,15 @@ const PLAYER = {
   money: 10,
   prod: 0,
   mult: 1,
-  // generators: [0, 0, 0,],
   generators: {
     "Gen I": 0,
     "Gen II": 0,
     "Gen III": 0,
   }
+  // generators: [{ 
+  //   name: "Gen I", prod: 0 },{
+  //   name: "Gen II", prod: 0 },{
+  //   name: "Gen III", prod: 0 }]
 }
 
 
@@ -25,7 +28,7 @@ const App = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       setPlayerData({ ...player, money: (player.money + player.prod / 20) });
-      // console.log((player.money + player.prod/20).toFixed(1)  );
+      // console.log( (player.money + player.prod/20).toFixed(1) );
     }, 50)
 
     return () => {

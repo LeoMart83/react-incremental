@@ -6,7 +6,6 @@ export const GENERATORS_ARRAY = [
         prod: 1,
         prodOfOne: 1,
         amount: 0,
-        bought: 0,
         mult: 1,
     },
     {
@@ -16,7 +15,6 @@ export const GENERATORS_ARRAY = [
         prod: 1,
         prodOfOne: 1,
         amount: 0,
-        bought: 0,
         mult: 1,
     },
     {
@@ -26,7 +24,6 @@ export const GENERATORS_ARRAY = [
         prod: 1,
         prodOfOne: 1,
         amount: 0,
-        bought: 0,
         mult: 1,
     }
 ]

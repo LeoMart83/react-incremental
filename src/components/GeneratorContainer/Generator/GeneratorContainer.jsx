@@ -21,22 +21,24 @@ export const GeneratorContainer = (props) => {
         const canBuy = props.canBuyGenerator(generator);
         if (!canBuy) return;
 
-        if (generator.amount > 0 && (generator.amount + 1) % 10 === 0) {
-            setGenerator({
-                // These +1 suuuck
-                ...generator,
-                mult: generator.mult + 1,
-                prod: generator.prodOfOne * (generator.amount + 1) * ( generator.mult + 1 ),
-                cost: Math.round(generator.cost * 1.2),
-                amount: generator.amount + 1,
+        const nextGeneratorMult = generator.mult + 1;
+        const nextGeneratorAmount = generator.amount + 1;
+        const nextGeneratorCost = Math.round(generator.cost * 1.2);
 
+        if (( generator.amount > 0 ) && ( nextGeneratorAmount % 10 === 0 )) {
+            setGenerator({
+                ...generator,
+                mult: nextGeneratorMult,
+                prod: generator.prodOfOne * nextGeneratorAmount * nextGeneratorMult,
+                cost: nextGeneratorCost,
+                amount: nextGeneratorAmount,
             });
         } else {
             setGenerator({
                 ...generator,
-                prod: generator.prodOfOne * (generator.amount + 1) * generator.mult,
-                cost: Math.round(generator.cost * 1.2),
-                amount: generator.amount + 1,
+                prod: generator.prodOfOne * nextGeneratorAmount * generator.mult,
+                cost: nextGeneratorCost,
+                amount: nextGeneratorAmount,
             });
         }
     }
