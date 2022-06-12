@@ -39,7 +39,6 @@ const App = () => {
     setPlayerData({ ...player, prod: calcProd() });
   }, [player.generators]);
 
-
   const canBuyGenerator = (generatorCost) => {
     if (generatorCost > player.money) return false
     else return true;

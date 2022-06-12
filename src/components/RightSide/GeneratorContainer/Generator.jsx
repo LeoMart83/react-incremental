@@ -1,11 +1,18 @@
-export const Generator = ({buyGenerator, generator}) => {
-    return (
-        <div className="generator-block" onClick={() => buyGenerator()}>
-            <div className="generator-name"> {generator.name} x {generator.amount ? generator.amount : 0} </div>
+export const Generator = ({ buyGenerator, generator, setShowHint, showHint }) => {
+    return (<>
+        <div className="generator-content"
+            onClick={() => buyGenerator()}
+            onMouseOver={() => { setShowHint(generator.name) }}
+            onMouseLeave={() => { setShowHint(false) }}>
+                
+            <div className="generator-name-amount"><span>{generator.name}</span> <span>{generator.amount}</span></div>
             <div className="generator-cost-prod">
-            <span> Cost: {generator.cost} </span>
-            <span> Produces: {generator.prodOfOne * generator.mult}/sec </span>
+                <span> {generator.cost}$ </span>
+                <span> Produces: {generator.prodOfOne * generator.mult}/sec </span>
             </div>
+            {(showHint === generator.name) ? <div >
+                {generator.amount} of "{generator.name}" produce {generator.prodOfOne * generator.mult * generator.amount} $/sec
+                </div> : null}
         </div>
-    )
+    </>)
 }

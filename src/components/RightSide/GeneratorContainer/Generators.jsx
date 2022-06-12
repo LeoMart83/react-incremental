@@ -4,14 +4,14 @@ import { GENERATORS_ARRAY } from "../../../constants/generators";
 export const Generators = (props) => {
 
     const mappedGenerators = GENERATORS_ARRAY.map(generator =>
-         <GeneratorContainer
+        <GeneratorContainer
             canBuyGenerator={props.canBuyGenerator}
             updateGameData={props.updateGameData}
             generator={generator}
             key={generator.tier} />);
 
-    return (<div className="generators">
-         <div>{mappedGenerators}</div>
-            </div >
+    return (<>
+        <div>{mappedGenerators}</div>
+    </>
     )
 }

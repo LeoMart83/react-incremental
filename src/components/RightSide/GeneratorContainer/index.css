@@ -1,5 +1,5 @@
-.generator-block {
-    height:80px;
+.generator-content {
+    height:100px;
     width: 300px;
     padding: 8px;
     box-sizing: border-box;
@@ -9,15 +9,22 @@
     background-color: rgba(235, 213, 179, 0.6);
     font-style: italic;
     user-select: none;
+    margin-bottom: 12px;
 }
 
-.generator-block:not(:last-child) {
+/* .generator-content:not(:last-child) {
     border-bottom: 0px;
-}
+} */
 
-.generator-name {
+/* .generator-content:not(:first-child) {
+    border-top: 0px;
+} */
+
+.generator-name-amount {
     font-size: 30px;
     font-family: monospace;
+    display: flex;
+    justify-content: space-between;
 }
 
 .generator-cost-prod{
@@ -26,4 +33,3 @@
     margin-top: 8px;
     font-size: 22px;
 }
-

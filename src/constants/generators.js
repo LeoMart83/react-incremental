@@ -7,6 +7,7 @@ export const GENERATORS_ARRAY = [
         prodOfOne: 1,
         amount: 0,
         mult: 1,
+        persent: 0,
     },
     {
         name: 'Gen II',
@@ -16,6 +17,7 @@ export const GENERATORS_ARRAY = [
         prodOfOne: 1,
         amount: 0,
         mult: 1,
+        persent: 0,
     },
     {
         name: 'Gen III',
@@ -25,5 +27,6 @@ export const GENERATORS_ARRAY = [
         prodOfOne: 1,
         amount: 0,
         mult: 1,
+        persent: 0,
     }
 ]
