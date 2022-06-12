@@ -1,5 +1,5 @@
-import { GeneratorContainer } from "./Generator/GeneratorContainer"
-import { GENERATORS_ARRAY } from "../../constants/generators";
+import { GeneratorContainer } from "./GeneratorContainer"
+import { GENERATORS_ARRAY } from "../../../constants/generators";
 
 export const Generators = (props) => {
 
@@ -10,9 +10,8 @@ export const Generators = (props) => {
             generator={generator}
             key={generator.tier} />);
 
-    return (<div>
-        <div> Generators:  </div>
-         {mappedGenerators} 
-    </div >
+    return (<div className="generators">
+         <div>{mappedGenerators}</div>
+            </div >
     )
 }

@@ -1,0 +1,29 @@
+.generator-block {
+    height:80px;
+    width: 300px;
+    padding: 8px;
+    box-sizing: border-box;
+    border: 2px solid black;
+    text-align: center;
+    cursor: pointer;
+    background-color: rgba(235, 213, 179, 0.6);
+    font-style: italic;
+    user-select: none;
+}
+
+.generator-block:not(:last-child) {
+    border-bottom: 0px;
+}
+
+.generator-name {
+    font-size: 30px;
+    font-family: monospace;
+}
+
+.generator-cost-prod{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    font-size: 22px;
+}
+

@@ -4,19 +4,10 @@
     display: flex;
     width: 1000px;
     margin: 0 auto;
-    box-sizing: border-box;
 }
 
 .first-block, .second-block, .generators-block {
     width: 300px;
     height: 100%;
-    border: 1px solid black;
-    text-align: center;
-    font-size: 40px;
     margin: 20px;
-}
-
-.generators-block {
-    width: 400 px;
-
 }

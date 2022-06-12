@@ -1,6 +1,6 @@
-import { CurrencyInfo } from "./components/CurrencyInfo";
-import { GameplayArea } from "./components/GameplayArea";
-import { Generators } from "./components/GeneratorContainer/Generators";
+import { CurrencyInfo } from "./components/CurrencyInfo/CurrencyInfo";
+import { GameplayArea } from "./components/GameplayArea/GameplayArea";
+import { Generators } from "./components/RightSide/GeneratorContainer/Generators";
 import { useState, useEffect } from "react";
 import "./index.css";
 
@@ -58,13 +58,13 @@ const App = () => {
     return newGenerators;
   }
 
-
   return (<div className="app">
+    
     <div className="first-block"> <CurrencyInfo player={player} /> </div>
     <div className="second-block"> <GameplayArea /> </div>
     <div className="generators-block"> <Generators updateGameData={updateGameData} canBuyGenerator={canBuyGenerator} /> </div>
   </div>
   )
 }
-
+//Rename components
 export default App;
