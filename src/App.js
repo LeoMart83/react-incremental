@@ -48,7 +48,8 @@ const App = () => {
 
   const updateGameData = (generator) => {
     const previousGeneratorCost = generator.cost / 1.2;
-    setPlayerData({ ...player, money: player.money - previousGeneratorCost, generators: recalculateGenerators(generator) });
+    setPlayerData( prevState => { 
+      return {...prevState, money: player.money - previousGeneratorCost, generators: recalculateGenerators(generator) }});
   }
 
   const recalculateGenerators = (generator) => {

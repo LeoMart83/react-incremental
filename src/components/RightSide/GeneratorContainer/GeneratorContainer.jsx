@@ -6,7 +6,7 @@ import { Generator } from "./Generator";
 export const GeneratorContainer = (props) => {
 
     const [generator, setGenerator] = useState(props.generator);
-    const [showHint, setShowHint] = useState(false);
+    const [showDescription, setShowDescription] = useState(false);
 
     useEffect(() => {
         setGenerator({ ...generator, prodOfOne: Math.round(generator.cost / 20 + generator.tier) });
@@ -26,7 +26,7 @@ export const GeneratorContainer = (props) => {
         const nextGeneratorAmount = generator.amount + 1;
         const nextGeneratorCost = Math.round(generator.cost * 1.2);
 
-        if (( generator.amount ) && ( nextGeneratorAmount % 10 === 0 )) {
+        if ((generator.amount) && (nextGeneratorAmount % 10 === 0)) {
             setGenerator({
                 ...generator,
                 mult: nextGeneratorMult,
@@ -44,5 +44,9 @@ export const GeneratorContainer = (props) => {
         }
     }
 
-    return (<Generator buyGenerator={buyGenerator} generator={generator} setShowHint={setShowHint} showHint={showHint} />)
+    return (<Generator
+        generator={generator}
+        buyGenerator={buyGenerator}
+        showDescription={showDescription}
+        setShowDescription={setShowDescription} />)
 }

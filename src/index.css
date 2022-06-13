@@ -7,7 +7,5 @@
 }
 
 .first-block, .second-block, .generators-block {
-    width: 300px;
-    height: 100%;
     margin: 20px;
 }

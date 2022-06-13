@@ -1,17 +1,17 @@
-export const Generator = ({ buyGenerator, generator, setShowHint, showHint }) => {
+export const Generator = ({ generator, buyGenerator, showDescription, setShowDescription }) => {
     return (<>
         <div className="generator-content"
             onClick={() => buyGenerator()}
-            onMouseOver={() => { setShowHint(generator.name) }}
-            onMouseLeave={() => { setShowHint(false) }}>
+            onMouseOver={() => { setShowDescription(generator.name) }}
+            onMouseLeave={() => { setShowDescription(false) }}>
                 
             <div className="generator-name-amount"><span>{generator.name}</span> <span>{generator.amount}</span></div>
-            <div className="generator-cost-prod">
-                <span> {generator.cost}$ </span>
-                <span> Produces: {generator.prodOfOne * generator.mult}/sec </span>
+            <div className="generator-cost">
+                <b>{generator.cost}$</b>
             </div>
-            {(showHint === generator.name) ? <div >
-                {generator.amount} of "{generator.name}" produce {generator.prodOfOne * generator.mult * generator.amount} $/sec
+            {(showDescription === generator.name) ? <div className="hint">
+                <div className="inner-row">Each produces {generator.prodOfOne * generator.mult} $/sec</div>
+                <div className="inner-row">{generator.amount} of "{generator.name}" produce {generator.amount ? generator.prod : 0} $/sec</div>
                 </div> : null}
         </div>
     </>)
