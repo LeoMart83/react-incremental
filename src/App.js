@@ -1,6 +1,6 @@
 import { CurrencyInfo } from "./components/CurrencyInfo/CurrencyInfo";
 import { GameplayArea } from "./components/GameplayArea/GameplayArea";
-import { Generators } from "./components/RightSide/GeneratorContainer/Generators";
+import { Generators } from "./components/RightSide/Generators/Generators";
 import { useState, useEffect } from "react";
 import "./index.css";
 

@@ -1,4 +1,4 @@
-import { GeneratorContainer } from "./GeneratorContainer"
+import { GeneratorContainer } from "./GeneratorContainer/GeneratorContainer"
 import { GENERATORS_ARRAY } from "../../../constants/generators";
 
 export const Generators = (props) => {
