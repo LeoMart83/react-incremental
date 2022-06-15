@@ -5,7 +5,7 @@ export const Generator = ({ generator, buyGenerator, showDescription, setShowDes
             onMouseOver={() => { setShowDescription(generator.name) }}
             onMouseLeave={() => { setShowDescription(false) }}>
                 
-            <div className="generator-name-amount"><span>{generator.name}</span> <span>{generator.amount}</span></div>
+            <div className="generator-name-amount"><span>{generator.name} <img src={generator.img}/></span>  <span>{generator.amount}</span></div>
             <div className="generator-cost">
                 <b>{generator.cost}$</b>
             </div>

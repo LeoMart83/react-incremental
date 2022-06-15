@@ -9,12 +9,14 @@ const PLAYER = {
   prod: 0,
   mult: 1,
   generators: [{
-    name: "Gen I", prod: 0
-  }, {
-    name: "Gen II", prod: 0
-  }, {
-    name: "Gen III", prod: 0
-  }],
+    name: "Ore Mining", prod: 0
+  }, 
+  // {
+  //   name: "Gen II", prod: 0
+  // }, {
+  //   name: "Gen III", prod: 0
+  // }
+],
 }
 
 
